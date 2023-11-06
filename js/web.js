@@ -5,12 +5,12 @@ $(function () {
     //$(태그).animate({},spped,function(){})
     //$(태그).appendTo($(부모가 될 태그))
 
-    const aniw = $(".swiper-slide").height();  //$(".swiper-slid").css("witdh");
+    let count = 0;
 
-    setInterval(function () {
-        $(".swiper-wrapper").animate({ "marginTop": -aniw }, 400, function () {
-            $(".swiper-slide").eq(0).appendTo($(".swiper-wrapper"))
-            $(".swiper-wrapper").css("marginTop", 0)
-        })
-    }, 3000)
+    setInterval(feadani, 3000)
+    function feadani() {
+        count++;
+        count = count % $(".swiper-slide").length
+        $(".swiper-slide").eq(count).addClass("on").siblings().removeClass("on")
+    }
 })
